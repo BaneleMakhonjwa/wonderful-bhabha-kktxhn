@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>weather services</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="weather-services">
+      <header>
+        <form id="search-form" onsubmit="searchCity(event)">
+          <input type="text" placeholder="Enter a city.." class="search" />
+          <input type="submit" value="search" class="myButton" />
+        </form>
+      </header>
+      <br />
+      <hr />
+      <main>
+        <div class="degree-info">
+          <div>
+            <h1 id="current-city">Paris</h1>
+            <div class="current-details">
+              <p id="current-date-time" style="display: inline">15:32</p>
+              , moderate rain <br />
+              Humidity: <strong class="color">87%</strong>, Wind:
+              <strong class="color">7.2km/h</strong>
+            </div>
+          </div>
+          <div class="degree">
+            <span class="degree-icon">☀️ </span>
+            <span class="degree-value">24</span>
+            <span class="degree-units">&deg;C </span>
+          </div>
+        </div>
+        <hr />
+
+        <br />
+        <footer>
+          <p class="current-details">
+            This project was coded by
+            <a href="#" target="_blank" style="color: rgba(0, 0, 255, 0.679)">
+              Banele Makhonjwa</a
+            >
+            and is
+            <a href="#" target="_blank" style="color: rgba(0, 0, 255, 0.692)">
+              on GitHub</a
+            >
+            and
+            <a href="#" target="_blank" style="color: rgba(0, 0, 255, 0.675)"
+              >hosted on Netlify</a
+            >
+          </p>
+        </footer>
+      </main>
+    </div>
+    <script>
+      function displayDateAndTime() {
+        var currentDate = new Date();
+        var options = {
+          weekday: "long",
+          hour: "numeric",
+          minute: "numeric",
+        };
+        var currentDateTime = currentDate.toLocaleString("en-Uk", options);
+        document.getElementById("current-date-time").innerHTML =
+          currentDateTime;
+      }
+
+      displayDateAndTime();
+    </script>
+    <script>
+      function searchCity(event) {
+        event.preventDefault();
+
+        const input = document.querySelector(".search");
+        let cityName = input.value.trim();
+        cityName = cityName.replace(/\b\w/g, (l) => l.toUpperCase());
+        const currentCityElement = document.getElementById("current-city");
+
+        currentCityElement.textContent = cityName;
+        const key = "79b7oc5b3t06c8a280de50a1008e4a0f";
+        fetch(
+          `https://api.shecodes.io/weather/v1/current?query=${cityName}&key=${key}`
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            const degreeValueElement = document.querySelector(".degree-value");
+            const roundedTemperature = Math.round(data.temperature.current);
+            degreeValueElement.textContent = roundedTemperature;
+          })
+          .catch((error) => {
+            console.error("Error:", error);
+          });
+      }
+    </script>
+  </body>
+</html>
