@@ -22,9 +22,8 @@
           <div>
             <h1 id="current-city"></h1>
             <div class="current-details">
-              <p id="current-date-time" style="display: inline">15:32</p>
-              ,<span id="description"> moderate rain</span> <br />
-              Humidity: <strong class="color">87%</strong>, Wind:
+              <p id="current-date-time" style="display: inline">15:32</p>, <span id="description">  moderate rain</span> <br />
+              Humidity: <strong id="humidity">87%</strong>, Wind:
               <strong class="color">7.2km/h</strong>
             </div>
           </div>
@@ -91,7 +90,11 @@
             degreeValueElement.textContent = roundedTemperature;
             const descriptionValueElement = document.getElementById("description");
             descriptionValueElement.textContent = data.condition.description;
-          })
+            const humidityValueElement = document.getElementById("humidity");
+            humidityValueElement.textContent = `${data.temperature.humidity}%`;
+            const colorValueElement = document.querySelector(".color");
+            colorValueElement.textContent = `${data.wind.speed}km/h`;
+          });
          
       }
     </script>
