@@ -89,6 +89,8 @@
             const degreeValueElement = document.querySelector(".degree-value");
             const roundedTemperature = Math.round(data.temperature.current);
             degreeValueElement.textContent = roundedTemperature;
+            const descriptionValueElement = document.getElementById("description");
+            descriptionValueElement.textContent = data.condition.description;
           })
          
       }
