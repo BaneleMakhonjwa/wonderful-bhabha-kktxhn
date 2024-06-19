@@ -28,7 +28,7 @@
             </div>
           </div>
           <div class="degree">
-            <span class="degree-icon">⛈️ </span>
+            <div class="degree-icon">⛈️ </div>
             <span class="degree-value"></span>
             <span class="degree-units">&deg;C </span>
           </div>
@@ -88,12 +88,19 @@
             const degreeValueElement = document.querySelector(".degree-value");
             const roundedTemperature = Math.round(data.temperature.current);
             degreeValueElement.textContent = roundedTemperature;
+
             const descriptionValueElement = document.getElementById("description");
             descriptionValueElement.textContent = data.condition.description;
+
             const humidityValueElement = document.getElementById("humidity");
             humidityValueElement.textContent = `${data.temperature.humidity}%`;
+
             const colorValueElement = document.querySelector(".color");
             colorValueElement.textContent = `${data.wind.speed}km/h`;
+
+             const iconValueElement =
+              document.querySelector(".degree-icon");
+            iconValueElement.innerHTML = `<img src="${data.condition.icon_url}" class = "icon-weather"/>`;
           });
          
       }
