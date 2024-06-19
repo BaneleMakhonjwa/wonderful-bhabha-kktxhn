@@ -1,32 +1,30 @@
  
  
 .degree-info{ 
- text-align: right;
   font-family: roboto, sans-serif;
   display: flex;
   unicode-bidi: isolate;
   justify-content: space-between; 
 }
 .weather-services{
- background-clip: border-box;
- background-attachment: scroll;
- background-color: white;
- border: 10px;
- display: block;
- box-shadow:rgba(65, 50, 100, 0.08) 0px 30px 50px 0px;
- margin:60px;
- max-width:620px;
- padding: 30px;
+  background: white;
+  max-width: 600px;
+  margin: 45px auto;
+  box-shadow: 0 30px 50px rgba(65, 50, 100, 0.08);
+  border-radius: 16px;
+  padding: 30px;
 }
 hr {
   opacity: 0.05; 
   border: none; 
   border-top: 1px solid black; 
 }
-
-
+.degree{
+  display: flex;
+}
 .degree-icon {
-  font-size: 40px;
+  font-size: 20px;
+  display: inline;
 }
 .degree-value {
   font-size: 80px;
