@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="styles.css" />
   </head>
   <body>
-    <div class="weather-services">
+  <div class="weather-services">
       <header>
         <form id="search-form" onsubmit="searchCity(event)">
           <input type="text" placeholder="Enter a city.." class="search" />
@@ -17,23 +17,22 @@
       </header>
       <br />
       <hr />
-      <main>
-        <div class="degree-info">
-          <div>
+     <main>
+      <div class="degree-info">
+         <div>
             <h1 id="current-city"></h1>
             <div class="current-details">
-              <p id="current-date-time" style="display:inline"> time</p>, <span id="description">... </span> <br />
-              Humidity: <strong id="humidity">...</strong>, Wind:
-              <strong class="color">...</strong
-            </div>
+              <p id="current-date-time" style="display:inline"> time</p>, <span id="description"></span> <br/>
+              Humidity: <strong id="humidity"></strong>, Wind:
+              <strong class="color"></strong>
+             </div>
           </div>
           <div class="degree">
-            <span class="degree-icon"></span>
+            <div class="degree-icon"></div>
             <span class="degree-value"></span>
-            <span class="degree-units">&deg;C </span>
+            <span class="degree-units">℃</span>
           </div>
         </div>
-        <hr />
 
         <br />
         <footer>
