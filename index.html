@@ -53,7 +53,7 @@
         </footer>
       </main>
     </div>
-    <script>
+  <script>
       function displayDateAndTime() {
         var currentDate = new Date();
         var options = {
@@ -66,8 +66,10 @@
           currentDateTime;
       }
 
-      displayDateAndTime();
-      function searchCity(event) {
+        displayDateAndTime();
+        </script>
+        <script>
+        function searchCity(event) {
         event.preventDefault();
 
         const input = document.querySelector(".search");
@@ -142,6 +144,6 @@
 
         landingPage(chosenCity || "Cape Town");
       });
-      </script>
+</script>
   </body>
 </html>
