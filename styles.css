@@ -19,7 +19,8 @@
 hr {
   opacity: 0.05; 
   border: none; 
-  border-top: 1px solid black; 
+  border-top: 1px solid black;
+   
 }
 .degree{
   display: flex;
