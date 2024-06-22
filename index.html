@@ -53,7 +53,7 @@
         </footer>
       </main>
     </div>
-  <script>
+    <script>
       function displayDateAndTime() {
         var currentDate = new Date();
         var options = {
@@ -66,19 +66,18 @@
           currentDateTime;
       }
 
-        displayDateAndTime();
-        </script>
-        <script>
-        function searchCity(event) {
+      displayDateAndTime();
+      function searchCity(event) {
         event.preventDefault();
 
         const input = document.querySelector(".search");
         let cityName = input.value.trim();
         cityName = cityName.replace(/\b\w/g, (l) => l.toUpperCase());
         const currentCityElement = document.getElementById("current-city");
-        searchCity("paris");
-
         currentCityElement.textContent = cityName;
+        apiCall(cityName);
+      }
+      function apiCall(cityName) {
         const key = "79b7oc5b3t06c8a280de50a1008e4a0f";
         fetch(
           `https://api.shecodes.io/weather/v1/current?query=${cityName}&key=${key}`
@@ -89,45 +88,11 @@
             const roundedTemperature = Math.round(data.temperature.current);
             degreeValueElement.textContent = roundedTemperature;
 
-            const descriptionValueElement = document.getElementById("description");
+            const descriptionValueElement =
+              document.getElementById("description");
             descriptionValueElement.textContent = data.condition.description;
 
             const humidityValueElement = document.getElementById("humidity");
-            humidityValueElement.textContent = `${data.temperature.humidity}%`;
-
-            const colorValueElement = document.querySelector(".color");
-            colorValueElement.textContent = `${data.wind.speed}km/h`;
-
-             const iconValueElement =
-              document.querySelector(".degree-icon");
-            iconValueElement.innerHTML = `<img src="${data.condition.icon_url}" class = "icon-weather"/>`;
-          });
-         
-      }
-      </script>
-      <script>
-      function landingPage(cityName) {
-        const key = "79b7oc5b3t06c8a280de50a1008e4a0f";
-
-        fetch(
-          `https://api.shecodes.io/weather/v1/current?query=${cityName}&key=${key}`
-        )
-          .then((response) => response.json())
-          .then((data) => {
-            const degreeValueElement =
-              document.querySelector(".degree-value");
-            const roundedTemperature = Math.round(
-              data.temperature.current
-            );
-            degreeValueElement.textContent = roundedTemperature;
-
-            const descriptionValueElement =
-              document.getElementById("description");
-            descriptionValueElement.textContent =
-              data.condition.description;
-
-            const humidityValueElement =
-              document.getElementById("humidity");
             humidityValueElement.textContent = `${data.temperature.humidity}%`;
 
             const colorValueElement = document.querySelector(".color");
@@ -138,14 +103,17 @@
             weatherIconValueElement.innerHTML = `<img src="${data.condition.icon_url}" class = "icon-weather"/>`;
           });
       }
-        window.addEventListener("load", () => {
+      function landingPage(cityName) {
+        apiCall(cityName);
+      }
+      window.addEventListener("load", () => {
         const chosenCity = localStorage.getItem("chosenCity");
-        const currentCityElement =
-          document.getElementById("current-city");
+        const currentCityElement = document.getElementById("current-city");
         currentCityElement.textContent = chosenCity || "Cape Town";
 
         landingPage(chosenCity || "Cape Town");
       });
     </script>
+
   </body>
-</html>
+  <html>
