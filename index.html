@@ -113,6 +113,20 @@
 
         landingPage(chosenCity || "Cape Town");
       });
+      function newApiForecast(cityName) {
+        const key = "79b7oc5b3t06c8a280de50a1008e4a0f";
+        fetch(
+          `https://api.shecodes.io/weather/v1/forecast?query=${cityName}&key=${key}`
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            displayForecast(data);
+          })
+          .catch((error) => {
+            console.log(error);
+          });
+        newApiForecast(cityName);
+      }
     </script>
 
   </body>
