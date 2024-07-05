@@ -76,6 +76,7 @@
         const currentCityElement = document.getElementById("current-city");
         currentCityElement.textContent = cityName;
         apiCall(cityName);
+        newApiForecast(cityName);
       }
       function apiCall(cityName) {
         const key = "79b7oc5b3t06c8a280de50a1008e4a0f";
@@ -104,7 +105,7 @@
           });
       }
       function landingPage(cityName) {
-        apiCall(cityName);
+        apiCall(cityName),  newApiForecast(cityName);
       }
       window.addEventListener("load", () => {
         const chosenCity = localStorage.getItem("chosenCity");
