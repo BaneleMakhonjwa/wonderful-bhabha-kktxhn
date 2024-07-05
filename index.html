@@ -105,7 +105,8 @@
           });
       }
       function landingPage(cityName) {
-        apiCall(cityName),  newApiForecast(cityName);
+        apiCall(cityName);
+        newApiForecast(cityName);
       }
       window.addEventListener("load", () => {
         const chosenCity = localStorage.getItem("chosenCity");
